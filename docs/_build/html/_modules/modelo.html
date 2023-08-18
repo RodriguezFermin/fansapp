@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>modelo &mdash; documentación de HinchasApp - 0.0.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HinchasApp
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../conexion.html">conexion module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controlador.html">controlador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelo.html">modelo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../validacion.html">validacion module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vista.html">vista module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HinchasApp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">modelo</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para modelo</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">modelo.py:</span>
+<span class="sd">    Es el archivo que guarda la logica de la aplicación, se conecta con la base de datos a traves del modulo conexion, tambien utiliza el modulo de validacion para controlar los campos</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">validacion</span> <span class="kn">import</span> <span class="n">Validacion</span>
+<span class="kn">from</span> <span class="nn">conexion</span> <span class="kn">import</span> <span class="n">Hincha</span><span class="p">,</span><span class="n">Conectar</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">messagebox</span>
+
+<div class="viewcode-block" id="HinchasModel"><a class="viewcode-back" href="../modelo.html#modelo.HinchasModel">[documentos]</a><span class="k">class</span> <span class="nc">HinchasModel</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validar</span> <span class="o">=</span> <span class="n">Validacion</span><span class="p">()</span>
+        <span class="n">Conectar</span><span class="p">()</span>
+
+    <span class="c1">#DEFINICIÓN DE FUNCIONES</span>
+
+<div class="viewcode-block" id="HinchasModel.cargar"><a class="viewcode-back" href="../modelo.html#modelo.HinchasModel.cargar">[documentos]</a>    <span class="k">def</span> <span class="nf">cargar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">nombre1</span><span class="p">,</span><span class="n">apellido1</span><span class="p">,</span><span class="n">club1</span><span class="p">,</span><span class="n">tree</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Realiza el alta de un hincha</span>
+<span class="sd">        :param nombre1: El nombre del hincha.</span>
+<span class="sd">        :param apellido1: El apellido del hincha.</span>
+<span class="sd">        :param club1: El club del hincha.</span>
+<span class="sd">        :param tree: El arbol de la ventana principal.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">nombre</span> <span class="o">=</span> <span class="n">nombre1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">apellido</span> <span class="o">=</span> <span class="n">apellido1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">club</span> <span class="o">=</span> <span class="n">club1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">nombre</span><span class="o">!=</span><span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="n">apellido</span><span class="o">!=</span><span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="n">club</span><span class="o">!=</span><span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">validar</span><span class="o">.</span><span class="n">validar</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="n">apellido</span><span class="p">)):</span>
+                <span class="n">hincha</span><span class="o">=</span><span class="n">Hincha</span><span class="p">()</span>
+                <span class="n">hincha</span><span class="o">.</span><span class="n">nombre</span><span class="o">=</span><span class="n">nombre</span>
+                <span class="n">hincha</span><span class="o">.</span><span class="n">apellido</span><span class="o">=</span><span class="n">apellido</span>
+                <span class="n">hincha</span><span class="o">.</span><span class="n">club</span><span class="o">=</span><span class="n">club</span>
+                <span class="n">hincha</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">leer</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;Cadena de caracteres no válida&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span>            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;Debe ingresar todos los datos&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HinchasModel.leer"><a class="viewcode-back" href="../modelo.html#modelo.HinchasModel.leer">[documentos]</a>    <span class="k">def</span> <span class="nf">leer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tree</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Se encarga de leer en la base de datos y actualizar el arbol de la ventana principal con los registros que esten cargados en ella.</span>
+<span class="sd">        :param tree: El arbol de la ventana principal.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tree</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="o">*</span><span class="n">tree</span><span class="o">.</span><span class="n">get_children</span><span class="p">())</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">Hincha</span><span class="o">.</span><span class="n">select</span><span class="p">():</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">nombre</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">apellido</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">club</span><span class="p">))</span></div>
+         
+<div class="viewcode-block" id="HinchasModel.borrar"><a class="viewcode-back" href="../modelo.html#modelo.HinchasModel.borrar">[documentos]</a>    <span class="k">def</span> <span class="nf">borrar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tree</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Realiza la baja de un hincha.</span>
+<span class="sd">        :param tree: El arbol de la ventana principal.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">tree</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span><span class="o">!=</span><span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">item</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">item</span><span class="p">)[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+            <span class="n">mi_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+            <span class="n">borrar</span><span class="o">=</span><span class="n">Hincha</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Hincha</span><span class="o">.</span><span class="n">id</span><span class="o">==</span><span class="n">mi_id</span><span class="p">)</span>
+            <span class="n">borrar</span><span class="o">.</span><span class="n">delete_instance</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">leer</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;Debe seleccionar un hincha para eliminar&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HinchasModel.actualizarHincha"><a class="viewcode-back" href="../modelo.html#modelo.HinchasModel.actualizarHincha">[documentos]</a>    <span class="k">def</span> <span class="nf">actualizarHincha</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="n">var_nombre1</span><span class="p">,</span><span class="n">var_apellido1</span><span class="p">,</span><span class="n">var_club1</span><span class="p">,</span><span class="n">ventanaNueva</span><span class="p">,</span><span class="n">id_e</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Realiza la actualizacion de un hincha.</span>
+<span class="sd">            :param tree: El arbol de la ventana principal.</span>
+<span class="sd">            :param var_nombre1: El nombre del hincha.</span>
+<span class="sd">            :param var_apellido1: El apellido del hincha.</span>
+<span class="sd">            :param var_club1: El club del hincha.</span>
+<span class="sd">            :param ventanaNueva: La ventana actualizar.</span>
+<span class="sd">            :param id_e: El ID del hincha.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">nombre</span> <span class="o">=</span> <span class="n">var_nombre1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="n">apellido</span> <span class="o">=</span> <span class="n">var_apellido1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="n">club</span> <span class="o">=</span> <span class="n">var_club1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">nombre</span><span class="o">!=</span><span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="n">apellido</span><span class="o">!=</span><span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="n">club</span><span class="o">!=</span><span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">validar</span><span class="o">.</span><span class="n">validar</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="n">apellido</span><span class="p">)):</span>
+                    <span class="n">actualizar</span><span class="o">=</span><span class="n">Hincha</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">nombre</span><span class="o">=</span><span class="n">nombre</span><span class="p">,</span><span class="n">apellido</span><span class="o">=</span><span class="n">apellido</span><span class="p">,</span><span class="n">club</span><span class="o">=</span><span class="n">club</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Hincha</span><span class="o">.</span><span class="n">id</span><span class="o">==</span><span class="n">id_e</span><span class="p">)</span>
+                    <span class="n">actualizar</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+                    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;El hincha ha sido editado correctamente&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;CARGADO&quot;</span><span class="p">)</span>
+                    <span class="n">ventanaNueva</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">leer</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;Cadena de caracteres no válida&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span>
+                    <span class="n">ventanaNueva</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;Debe ingresar todos los datos&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span> </div>
+
+<div class="viewcode-block" id="HinchasModel.graficar"><a class="viewcode-back" href="../modelo.html#modelo.HinchasModel.graficar">[documentos]</a>    <span class="k">def</span> <span class="nf">graficar</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Grafica la cantidad de hinchas por club haciendo uso de la biblioteca matplotlib</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">boca</span><span class="p">,</span><span class="n">river</span><span class="p">,</span><span class="n">independiente</span><span class="p">,</span><span class="n">racing</span><span class="p">,</span><span class="n">sanlorenzo</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+        <span class="n">hinchas</span> <span class="o">=</span> <span class="n">Hincha</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">hincha</span> <span class="ow">in</span> <span class="n">hinchas</span><span class="p">:</span>
+            <span class="k">match</span> <span class="n">hincha</span><span class="o">.</span><span class="n">club</span><span class="p">:</span>
+                <span class="k">case</span> <span class="s2">&quot;BOCA JUNIORS&quot;</span><span class="p">:</span>
+                    <span class="n">boca</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">case</span> <span class="s2">&quot;RIVER PLATE&quot;</span><span class="p">:</span>
+                    <span class="n">river</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">case</span> <span class="s2">&quot;INDEPENDIENTE&quot;</span><span class="p">:</span>
+                    <span class="n">independiente</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">case</span> <span class="s2">&quot;RACING&quot;</span><span class="p">:</span>
+                    <span class="n">racing</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">case</span> <span class="s2">&quot;SAN LORENZO&quot;</span><span class="p">:</span>
+                    <span class="n">sanlorenzo</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">boca</span><span class="p">,</span><span class="n">river</span><span class="p">,</span><span class="n">independiente</span><span class="p">,</span><span class="n">racing</span><span class="p">,</span><span class="n">sanlorenzo</span><span class="p">]</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BOCA JUNIORS&quot;</span><span class="p">,</span> <span class="s2">&quot;RIVER PLATE&quot;</span><span class="p">,</span> <span class="s2">&quot;INDEPENDIENTE&quot;</span><span class="p">,</span> <span class="s2">&quot;RACING&quot;</span><span class="p">,</span> <span class="s2">&quot;SAN LORENZO&quot;</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hinchas por club&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2023, Marcelo Rodriguez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vista &mdash; documentación de HinchasApp - 0.0.1</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            HinchasApp
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../conexion.html">conexion module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controlador.html">controlador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelo.html">modelo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../validacion.html">validacion module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vista.html">vista module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HinchasApp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">vista</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para vista</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">vista.py:</span>
+<span class="sd">    Es el archivo de vistas, donde se da inicio a la ventana principal, que se conecta con el modelo, y a la ventana de actualizacion (VentanaNueva)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">StringVar</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">Label</span> 
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">Entry</span> 
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">ttk</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">Toplevel</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">messagebox</span>
+<span class="kn">from</span> <span class="nn">modelo</span> <span class="kn">import</span> <span class="n">HinchasModel</span>
+
+<div class="viewcode-block" id="Ventana"><a class="viewcode-back" href="../vista.html#vista.Ventana">[documentos]</a><span class="k">class</span> <span class="nc">Ventana</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">windows</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hincha</span><span class="o">=</span><span class="n">HinchasModel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">=</span><span class="n">windows</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">iconbitmap</span><span class="p">(</span><span class="s2">&quot;favicon.ico&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;700x350&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;APLICACION HINCHAS&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var_nombre</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var_apellido</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var_club</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">nombre</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Nombre&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nombre</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">apellido</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Apellido&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apellido</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">club</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Club del que es hincha&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">club</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">entry_nombre</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">var_nombre</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entry_nombre</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">entry_apellido</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">var_apellido</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entry_apellido</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">combo</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Combobox</span><span class="p">(</span>
+            <span class="n">state</span><span class="o">=</span><span class="s2">&quot;readonly&quot;</span><span class="p">,</span>
+            <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;BOCA JUNIORS&quot;</span><span class="p">,</span> <span class="s2">&quot;RIVER PLATE&quot;</span><span class="p">,</span> <span class="s2">&quot;RACING&quot;</span><span class="p">,</span> <span class="s2">&quot;INDEPENDIENTE&quot;</span><span class="p">,</span> <span class="s2">&quot;SAN LORENZO&quot;</span><span class="p">],</span>
+            <span class="n">textvariable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">var_club</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">combo</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="s2">&quot;columns&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;col1&quot;</span><span class="p">,</span> <span class="s2">&quot;col2&quot;</span><span class="p">,</span><span class="s2">&quot;col3&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s2">&quot;#0&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">minwidth</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s2">&quot;col1&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">minwidth</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s2">&quot;col2&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">minwidth</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s2">&quot;col3&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">minwidth</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s2">&quot;col1&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;NOMBRE&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s2">&quot;col2&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;APELLIDO&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s2">&quot;col3&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;CLUB&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">boton_g</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Cargar&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">hincha</span><span class="o">.</span><span class="n">cargar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var_nombre</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">var_apellido</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">var_club</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boton_g</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">boton_f</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Actualizar&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">actualizar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boton_f</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">boton_f</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Borrar&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">hincha</span><span class="o">.</span><span class="n">borrar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boton_f</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">boton_f</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Graficar&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hincha</span><span class="o">.</span><span class="n">graficar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boton_f</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">boton_f</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Salir&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">destroy</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boton_f</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">hincha</span><span class="o">.</span><span class="n">leer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">)</span>
+    
+<div class="viewcode-block" id="Ventana.ventanaNueva"><a class="viewcode-back" href="../vista.html#vista.Ventana.ventanaNueva">[documentos]</a>    <span class="k">def</span> <span class="nf">ventanaNueva</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">id</span><span class="p">,</span><span class="n">master</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="n">nombre</span><span class="p">,</span><span class="n">club</span><span class="p">,</span><span class="n">apellido</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Despliega la ventana de actualizar</span>
+<span class="sd">        :param id: El ID del hincha.</span>
+<span class="sd">        :param tree: El arbol de la vista principal.</span>
+<span class="sd">        :param master: La vista principal.</span>
+<span class="sd">        :param nombre: El nombre del hincha.</span>
+<span class="sd">        :param club: El club del hincha.</span>
+<span class="sd">        :param apellido: El apellido del hincha.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">var_nombre1</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">nombre</span><span class="p">)</span> 
+        <span class="n">var_apellido1</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">apellido</span><span class="p">)</span>
+        <span class="n">var_club1</span> <span class="o">=</span> <span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">club</span><span class="p">)</span>
+        <span class="n">id_e</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+        <span class="n">ventanaNueva</span> <span class="o">=</span> <span class="n">Toplevel</span><span class="p">(</span><span class="n">master</span><span class="p">)</span>
+        <span class="n">ventanaNueva</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Actualizar&quot;</span><span class="p">)</span>
+        <span class="n">ventanaNueva</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;450x120&quot;</span><span class="p">)</span>
+        <span class="n">ventanaNueva</span><span class="o">.</span><span class="n">iconbitmap</span><span class="p">(</span><span class="s2">&quot;favicon.ico&quot;</span><span class="p">)</span>
+
+        <span class="n">Label</span><span class="p">(</span><span class="n">ventanaNueva</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;INGRESE LOS NUEVOS VALORES PARA EL ID: &quot;</span><span class="o">+</span><span class="n">id_e</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>  
+        <span class="n">nombre1</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">ventanaNueva</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Nombre&quot;</span><span class="p">)</span>
+        <span class="n">nombre1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+        <span class="n">apellido1</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">ventanaNueva</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Apellido&quot;</span><span class="p">)</span>
+        <span class="n">apellido1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+        <span class="n">club1</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">ventanaNueva</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Club del que es hincha&quot;</span><span class="p">)</span>
+        <span class="n">club1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+        <span class="n">entry_nombre1</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">ventanaNueva</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">var_nombre1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+        <span class="n">entry_nombre1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+        <span class="n">entry_apellido1</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">ventanaNueva</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">var_apellido1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+        <span class="n">entry_apellido1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+        <span class="n">combo1</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Combobox</span><span class="p">(</span>
+            <span class="n">ventanaNueva</span><span class="p">,</span>
+            <span class="n">state</span><span class="o">=</span><span class="s2">&quot;readonly&quot;</span><span class="p">,</span>
+            <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;BOCA JUNIORS&quot;</span><span class="p">,</span> <span class="s2">&quot;RIVER PLATE&quot;</span><span class="p">,</span> <span class="s2">&quot;RACING&quot;</span><span class="p">,</span> <span class="s2">&quot;INDEPENDIENTE&quot;</span><span class="p">,</span> <span class="s2">&quot;SAN LORENZO&quot;</span><span class="p">],</span>
+            <span class="n">textvariable</span><span class="o">=</span><span class="n">var_club1</span>
+        <span class="p">)</span>
+        <span class="n">combo1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+        <span class="n">boton_g</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">ventanaNueva</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Guardar&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">hincha</span><span class="o">.</span><span class="n">actualizarHincha</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="n">var_nombre1</span><span class="p">,</span><span class="n">var_apellido1</span><span class="p">,</span><span class="n">var_club1</span><span class="p">,</span><span class="n">ventanaNueva</span><span class="p">,</span><span class="n">id_e</span><span class="p">))</span>
+        <span class="n">boton_g</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">boton_s</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">ventanaNueva</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Salir&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">ventanaNueva</span><span class="o">.</span><span class="n">destroy</span><span class="p">)</span>
+        <span class="n">boton_s</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ventana.actualizar"><a class="viewcode-back" href="../vista.html#vista.Ventana.actualizar">[documentos]</a>    <span class="k">def</span> <span class="nf">actualizar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="n">master</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recibe informacion de la ventana principal y la envia a la ventana nueva.</span>
+<span class="sd">        :param tree: El arbol de la ventana principal.</span>
+<span class="sd">        :param master: La ventana principal.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">tree</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span><span class="o">!=</span><span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">item</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">item</span><span class="p">)[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+            <span class="n">nombre</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">item</span><span class="p">)[</span><span class="s1">&#39;values&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">apellido</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">item</span><span class="p">)[</span><span class="s1">&#39;values&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">club</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">item</span><span class="p">)[</span><span class="s1">&#39;values&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ventanaNueva</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span><span class="n">master</span><span class="p">,</span><span class="n">tree</span><span class="p">,</span><span class="n">nombre</span><span class="p">,</span><span class="n">club</span><span class="p">,</span><span class="n">apellido</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;Debe seleccionar un hincha para actualizar&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2023, Marcelo Rodriguez.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
