@@ -1,5 +1,5 @@
 # Aplicación Hinchas
-Simple aplicación de tipo CRUD hecha en python
+Aplicación de tipo CRUD hecha en python
 
 Este es el trabajo de finalización de la diplomatura en python de UTN Buenos Aires.
 
@@ -14,7 +14,7 @@ Para uso del servidor, ver VideoConsultaExterna.mkv
 Para inicializar py controlador.py
 
 # fansapp
-Simple CRUD-type app made in python, tkinter as GUI.
+CRUD-type app made in python, tkinter as GUI.
 
 I made this app for an advanced python course at UTN Buenos Aires.
 
